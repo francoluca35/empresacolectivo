@@ -56,7 +56,7 @@ export default function Footer() {
 
       {/* Derechos reservados */}
       <div className="text-center p-4 text-sm text-white bg-black">
-      <span>Created by <a className="text-red-600 hover:text-[15px]" href="https://deamondd.com" target="_blank">Deamon Company</a></span> | | Todos los derechos reservados © 2025 
+      <span>Created by <a href="https://deamondd.com" target="blank">Deamon Company</a></span> | | Todos los derechos reservados © 2025 
       </div>
     </div>
   );
