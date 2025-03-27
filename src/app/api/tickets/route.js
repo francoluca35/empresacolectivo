@@ -1,4 +1,3 @@
-// /app/api/tickets/route.js
 import { connectDB } from "@/lib/mongodb";
 import { MongoClient } from "mongodb";
 
