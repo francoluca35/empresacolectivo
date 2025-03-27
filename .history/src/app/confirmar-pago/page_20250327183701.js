@@ -1,6 +1,6 @@
 "use client";
 import { Suspense } from 'react';
-import ConfirmarPagoContent from './ConfirmarPago';
+import ConfirmarPagoContent from './ConfirmarPagoContent';
 
 export default function ConfirmarPago() {
   return (
