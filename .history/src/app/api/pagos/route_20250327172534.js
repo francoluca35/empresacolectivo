@@ -1,16 +1,26 @@
-import clientPromise from "@/lib/mongodb";
+import { MongoClient } from "mongodb";
 import crypto from "crypto";
+import { env } from "process";
+
+const MONGODB_URI = env.MONGODB_URI;
+const DB_NAME = "ventapasajes";
+const COLLECTION_NAME = "pagos";
+
+const connectDB = async () => {
+  const client = await MongoClient.connect(MONGODB_URI);
+  const db = client.db(DB_NAME);
+  return { client, db };
+};
 
 export async function POST(req) {
   try {
-    const client = await clientPromise;
-    const db = client.db("ventapasajes");
-    const pagosCollection = db.collection("pagos");
+    const { client, db } = await connectDB();
+    const pagosCollection = db.collection(COLLECTION_NAME);
 
     const body = await req.json();
     console.log("🟡 Datos recibidos:", body);
 
-    // Validación de campos obligatorios
+    // Validar campos obligatorios
     if (
       !body.nombreCompleto || !body.dni || !body.destino || !body.metodoPago ||
       !body.origen || !body.cantidad
@@ -46,15 +56,15 @@ export async function POST(req) {
       fechaRegistro: new Date().toISOString(),
     };
 
-    await pagosCollection.insertOne(nuevoPago);
+    const result = await pagosCollection.insertOne(nuevoPago);
 
+    client.close();
     return new Response(JSON.stringify({ success: true, pago: nuevoPago }), {
       status: 201,
       headers: { "Content-Type": "application/json" },
     });
-
   } catch (error) {
-    console.error("❌ Error al guardar pago:", error);
+    console.error("Error al guardar pago:", error);
     return new Response(JSON.stringify({ error: "Error al guardar pago" }), {
       status: 500,
       headers: { "Content-Type": "application/json" },

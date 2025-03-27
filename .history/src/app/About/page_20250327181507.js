@@ -93,7 +93,7 @@ export default function Timeline() {
                 &times;
               </button>
 
-              <img
+              <Image
                 src={selectedImg.img}
                 alt={`Imagen ${selectedImg.year}`}
                 width={800}

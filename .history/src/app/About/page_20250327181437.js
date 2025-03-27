@@ -10,10 +10,10 @@ import { motion } from "framer-motion";
 const eventos = [
   {
     year: "2012",
-    img: "Assets/Timeline/1.png",
+    img: "/timeline/2012.jpg",
     text: "Comienza la historia de Rutatlantica en manos de Antonio Arcos. La empresa estaba ubicada en la ciudad de Cuidadela, Buenos Aires. Sus colores característicos eran blanco, azul y celeste.",
   },
-  { year: "2013", img: "Assets/Timeline/6.jpg", text: "todo" },
+  { year: "2013", img: "Assets/Timeline/1.png", text: "todo" },
   { year: "2014", img: "Assets/Timeline/2.jpg", text: "bien" },
   { year: "2015", img: "Assets/Timeline/3.jpg", text: "si" },
   { year: "2016", img: "Assets/Timeline/4.jpg", text: "vos" },
@@ -93,7 +93,7 @@ export default function Timeline() {
                 &times;
               </button>
 
-              <img
+              <Image
                 src={selectedImg.img}
                 alt={`Imagen ${selectedImg.year}`}
                 width={800}
