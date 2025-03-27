@@ -6,9 +6,9 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const imagenes = [
-  "/Assets/Carrousel/1.jpg",
-  "/Assets/Carrousel/2.jpg",
-  "/Assets/Carrousel/3.jpg",
+  "/public/Assets/carrousel/1.jpg",
+  "/public/Assets/carrousel/2.jpg",
+  "/public/Assets/carrousel/3.jpg",
 ];
 
 export default function Home() {
