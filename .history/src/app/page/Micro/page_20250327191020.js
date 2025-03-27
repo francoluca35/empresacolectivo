@@ -7,9 +7,6 @@ export default function Corte() {
 const irAUnidades = () => {
   router.push("/Servicios#unidades");
 };
-const irAServicios = () => {
-  router.push("/Servicios");
-};
 
   return (
     <section className="relative w-full min-h-screen overflow-hidden flex items-center justify-center md:justify-end">
@@ -66,7 +63,7 @@ const irAServicios = () => {
           <button onClick={irAUnidades} className="bg-red-500 hover:bg-red-600 transition text-black px-6 py-2 rounded-lg flex items-center gap-2 font-medium uppercase shadow-sm">
             🔍 conocer unidades
           </button>
-          <button onClick={irAServicios} className="bg-red-500 hover:bg-red-600 transition text-black px-6 py-2 rounded-lg flex items-center gap-2 font-medium uppercase shadow-sm">
+          <button className="bg-red-500 hover:bg-red-600 transition text-black px-6 py-2 rounded-lg flex items-center gap-2 font-medium uppercase shadow-sm">
             🛏️ conocer servicios
           </button>
         </div>
