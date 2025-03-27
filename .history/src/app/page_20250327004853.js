@@ -1,5 +1,5 @@
 import Navbar from "./Component/Navbar";
-import ArrowUpButton from "./Component/Arrowup";
+import Arrowup from "./Component/Arrowup";
 import Inicio from "./page/Home/page";
 import Micro from "./page/Micro/page";
 import Destino from "./page/Destino/page";
@@ -10,7 +10,7 @@ export default function Home() {
   return (
   <>
   <Navbar/>
-  <ArrowUpButton />
+  <Arrowup />
   <Inicio/>
   <Payment />
   <Micro />

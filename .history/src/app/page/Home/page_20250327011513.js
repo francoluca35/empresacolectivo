@@ -27,7 +27,7 @@ export default function Home() {
         backgroundPosition: "center",
       }}
     >
-      <div className="flex mt-10 md:mt-0 flex-col md:flex-row max-w-6xl w-full">
+      <div className="flex flex-col md:flex-row max-w-6xl w-full">
         {/* Buscador */}
         <div className="w-full md:w-1/2 p-4 md:p-8 flex flex-col space-y-4 text-black bg-opacity-30 bg-black backdrop-blur-lg rounded-3xl shadow-2xl md:mr-4">
           <input
