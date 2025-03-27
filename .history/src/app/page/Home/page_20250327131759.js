@@ -22,7 +22,6 @@ export default function Home() {
   const [rangoFechas, setRangoFechas] = useState([null, null]);
   const [pasajeros, setPasajeros] = useState(1);
   const [mostrarResultados, setMostrarResultados] = useState(false);
-  const [mostrarModal, setMostrarModal] = useState(false);
   const [cantidadBoletos, setCantidadBoletos] = useState({});
 
   useEffect(() => {
@@ -75,7 +74,7 @@ export default function Home() {
         backgroundPosition: "center",
       }}
     >
-      <div className="flex mt-16 md:mt-0 flex-col md:flex-row max-w-6xl w-full">
+      <div className="flex mt-10 md:mt-0 flex-col md:flex-row max-w-6xl w-full">
         {/* Buscador */}
         <div className="w-full md:w-1/2 p-4 md:p-8 flex flex-col space-y-4 text-black bg-opacity-30 bg-black backdrop-blur-lg rounded-3xl shadow-2xl md:mr-4">
           <select
@@ -132,7 +131,7 @@ export default function Home() {
             startDate={rangoFechas[0]}
             endDate={rangoFechas[1]}
             selectsRange
-            className="rounded-xl bg-white px-4 py-3 w-full"
+            className="rounded-xl bg-white px-4 py-3"
             placeholderText="Seleccioná un rango de fechas"
           />
 
@@ -142,18 +141,40 @@ export default function Home() {
             value={pasajeros}
             onChange={(e) => setPasajeros(parseInt(e.target.value))}
             placeholder="Cantidad de pasajeros"
-            className="rounded-xl bg-white px-4 py-3"
+            className="rounded-xl bg-white px-4 py-3 w-full"
           />
 
           <button
-            onClick={() => {
-              setMostrarResultados(true);
-              setMostrarModal(true);
-            }}
+            onClick={() => setMostrarResultados(true)}
             className="bg-cyan-700 hover:bg-cyan-600 text-white rounded-xl py-3 font-bold text-lg transition"
           >
             Buscar
           </button>
+
+          {/* Resultados */}
+          {mostrarResultados && !loading && (
+            <div className="bg-white p-4 mt-4 rounded-xl text-black max-h-80 overflow-y-auto">
+              <h2 className="font-bold mb-2">Resultados:</h2>
+              {resultadosFiltrados.length > 0 ? (
+                resultadosFiltrados.map((ticket, i) => (
+                  <div key={i} className="border-b py-2 text-sm space-y-1">
+                    <p><strong>{ticket.origen}</strong> → <strong>{ticket.destino}</strong></p>
+                    <p>Tipo: {ticket.tipoServicio} | Turno: {ticket.horario}</p>
+                    <p>Desde: {ticket.fechaDesde} / Hasta: {ticket.fechaHasta}</p>
+                    <p>Precio por boleto: ${ticket.precio}</p>
+                    <button
+                      onClick={() => handleCompra(ticket)}
+                      className="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded mt-1"
+                    >
+                      Comprar
+                    </button>
+                  </div>
+                ))
+              ) : (
+                <p>No se encontraron pasajes.</p>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Carrusel de promociones */}
@@ -167,51 +188,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      {/* Modal de resultados */}
-      {mostrarModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 px-4">
-          <div className="bg-white max-w-xl w-full max-h-[80vh] overflow-y-auto rounded-2xl p-6 shadow-2xl relative">
-            <button
-              className="absolute top-3 right-4 text-gray-500 hover:text-red-500 text-xl font-bold"
-              onClick={() => setMostrarModal(false)}
-            >
-              &times;
-            </button>
-            <h2 className="text-xl font-bold text-center mb-4 text-black">
-              Resultados de búsqueda
-            </h2>
-
-            {resultadosFiltrados.length > 0 ? (
-              resultadosFiltrados.map((ticket, i) => (
-                <div key={i} className="border-b py-2 text-sm text-black space-y-1">
-                  <p>
-                    <strong>{ticket.origen}</strong> →{" "}
-                    <strong>{ticket.destino}</strong>
-                  </p>
-                  <p>
-                    Tipo: {ticket.tipoServicio} | Turno: {ticket.horario}
-                  </p>
-                  <p>
-                    Desde: {ticket.fechaDesde} / Hasta: {ticket.fechaHasta}
-                  </p>
-                  <p>Precio por boleto: ${ticket.precio}</p>
-                  <button
-                    onClick={() => handleCompra(ticket)}
-                    className="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded mt-1"
-                  >
-                    Comprar
-                  </button>
-                </div>
-              ))
-            ) : (
-              <p className="text-red-600 text-center">
-                No se encontraron pasajes.
-              </p>
-            )}
-          </div>
-        </div>
-      )}
     </main>
   );
 }
