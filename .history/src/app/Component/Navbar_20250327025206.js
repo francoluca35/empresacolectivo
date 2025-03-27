@@ -70,14 +70,14 @@ export default function Navbar() {
       {/* Navbar principal */}
       <nav className="w-full bg-white text-white shadow-md">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <a href="/"><img
+          <img
             src="Assets/navbar.png"
             alt="Maurello S.A Logo"
             width={200}
             height={50}
             priority
           />
-</a>
+
           {/* Navegación desktop */}
           <div className="hidden md:flex space-x-6 font-semibold">
             <button onClick={() => goTo("/")} className="hover:text-blue-400 transition text-red-600">Inicio</button>

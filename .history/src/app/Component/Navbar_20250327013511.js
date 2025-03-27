@@ -70,20 +70,20 @@ export default function Navbar() {
       {/* Navbar principal */}
       <nav className="w-full bg-white text-white shadow-md">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <a href="/"><img
+          <img
             src="Assets/navbar.png"
             alt="Maurello S.A Logo"
             width={200}
             height={50}
             priority
           />
-</a>
+
           {/* Navegación desktop */}
           <div className="hidden md:flex space-x-6 font-semibold">
             <button onClick={() => goTo("/")} className="hover:text-blue-400 transition text-red-600">Inicio</button>
             <button onClick={() => goTo("/About")} className="hover:text-blue-400 transition text-red-600">Nosotros</button>
-            <button onClick={() => goTo("/Servicios")} className="hover:text-blue-400 transition text-red-600">Servicios</button>
-            <button onClick={() => goTo("/Contacto")} className="hover:text-blue-400 transition text-red-600">Contacto</button>
+            <button onClick={() => goTo("/#servicios")} className="hover:text-blue-400 transition text-red-600">Servicios</button>
+            <button onClick={() => goTo("/#contacto")} className="hover:text-blue-400 transition text-red-600">Contacto</button>
           </div>
 
           {/* Botón hamburguesa */}
@@ -99,9 +99,9 @@ export default function Navbar() {
           <div className="md:hidden bg-white py-4 px-6">
             <div className="flex flex-col space-y-4">
               <button onClick={() => goTo("/")} className="hover:text-blue-400 transition text-red-600">Inicio</button>
-              <button onClick={() => goTo("/About")} className="hover:text-blue-400 transition text-red-600">Nosotros</button>
-              <button onClick={() => goTo("/Servicios")} className="hover:text-blue-400 transition text-red-600">Servicios</button>
-              <button onClick={() => goTo("/Contacto")} className="hover:text-blue-400 transition text-red-600">Contacto</button>
+              <button onClick={() => goTo("/nosotros")} className="hover:text-blue-400 transition text-red-600">Nosotros</button>
+              <button onClick={() => goTo("/#servicios")} className="hover:text-blue-400 transition text-red-600">Servicios</button>
+              <button onClick={() => goTo("/#contacto")} className="hover:text-blue-400 transition text-red-600">Contacto</button>
             </div>
           </div>
         )}
